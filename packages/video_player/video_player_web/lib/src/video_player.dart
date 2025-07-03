@@ -264,6 +264,10 @@ class VideoPlayer {
     }
   }
 
+  Future<void> enterFullScreen() async {
+    _videoElement.requestFullscreen();
+  }
+  
   void _resetOptions() {
     _videoElement.controls = false;
     _videoElement.removeAttribute('controlsList');
