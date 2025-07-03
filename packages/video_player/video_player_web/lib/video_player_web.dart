@@ -145,6 +145,11 @@ class VideoPlayerPlugin extends VideoPlayerPlatform {
   }
 
   @override
+  Future<void> enterFullScreen(int textureId,) async {
+    return _player(textureId).enterFullScreen();
+  }
+
+  @override
   Future<void> setWebOptions(int playerId, VideoPlayerWebOptions options) {
     return _player(playerId).setOptions(options);
   }
