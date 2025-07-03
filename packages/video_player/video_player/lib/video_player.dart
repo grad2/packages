@@ -599,6 +599,17 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
     await _applyPlayPause();
   }
 
+  Future<void> enterFullScreenWeb() async {
+    await _applyFullScreenWeb();
+  }
+
+  Future<void> _applyFullScreenWeb() async {
+    if (_isDisposedOrNotInitialized) {
+      return;
+    }
+    await _videoPlayerPlatform.enterFullScreen(_playerId);
+  }
+
   Future<void> _applyLooping() async {
     if (_isDisposedOrNotInitialized) {
       return;
