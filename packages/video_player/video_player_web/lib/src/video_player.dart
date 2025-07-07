@@ -119,12 +119,12 @@ class VideoPlayer {
       ));
     });
 
-    _videoElement.onFullscreenChange.listen((dynamic v) {
+    _videoElement.addEventListener("fullscreenchange", (web.Event a) {
       _eventController.add(VideoEvent(
         eventType: VideoEventType.changeFullScreen,
         isPlaying: true,
       ));
-    });
+    }.toJS);
 
     _videoElement.onEnded.listen((dynamic _) {
       setBuffering(false);
