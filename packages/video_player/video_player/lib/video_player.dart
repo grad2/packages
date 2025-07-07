@@ -402,6 +402,7 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   ClosedCaptionFile? _closedCaptionFile;
   Timer? _timer;
   bool _isDisposed = false;
+  bool _isFullScreen = false;
   Completer<void>? _creatingCompleter;
   StreamSubscription<dynamic>? _eventSubscription;
   _VideoAppLifeCycleObserver? _lifeCycleObserver;
@@ -415,6 +416,9 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// on the plugin.
   @visibleForTesting
   int get playerId => _playerId;
+
+    
+  bool get isFullScreen => _isFullScreen;
 
   /// Attempts to open the given [dataSource] and load metadata about the video.
   Future<void> initialize() async {
@@ -527,6 +531,8 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
           } else {
             value = value.copyWith(isPlaying: event.isPlaying);
           }
+        case VideoEventType.changeFullScreen:
+          _isFullScreen = !_isFullScreen;
         case VideoEventType.unknown:
           break;
       }
