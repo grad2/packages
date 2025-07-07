@@ -327,6 +327,7 @@ enum VideoEventType {
   /// phone calls, or other app media such as music players.
   isPlayingStateUpdate,
 
+  changeFullScreen,
   /// An unknown event has been received.
   unknown,
 }
